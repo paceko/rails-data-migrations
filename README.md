@@ -5,11 +5,11 @@
 
 ## Why?
 
-Have you ever run into a problem when alongside with DB schema migrations (managed by `rake db:migrate` in Rails)
-you have to often change your DB content, as well? If you read this, you probably tried to use schema migrations do change your data after schema changes, but this is not a recommended way and sometimes data changes could take a long time, so they will block your app at the deploy time.
-Another approach is to use [rake tasks](https://robots.thoughtbot.com/data-migrations-in-rails) to run your changes after `db:migrate` or even independently. But this could also become a mess after some time if you have multiple developers in your project, and you need to change your data often.
+Have you ever run into a problem alongside DB schema migrations (managed by `rake db:migrate` in Rails) and
+you often changed your DB content as well? If you read this, you probably tried to use schema migrations. Do change your data after schema changes, eventhough this is not recommended. Due to the fact that data changes can take a long time, your app will be blocked when you deploy.
+Another approach to use is: [rake tasks](https://robots.thoughtbot.com/data-migrations-in-rails). Run your changes after `db:migrate` or even independently. But this could also become a mess after a while if you have multiple developers in your project, and you need to change your data often.
 
-This is our solution we came up with in our company - run data migration tasks in a `db:migrate`-like manner
+This is the solution we came up with - run data migration tasks in a `db:migrate`-like manner
  
 ## Usage
  
@@ -18,7 +18,7 @@ To create a data migration you need to run:
 rails generate data_migration migration_name
 ```
 
-and this will create a `migration_name.rb` file in `db/data_migrations` folder with a following content:
+and this will create a `migration_name.rb` file in `db/data_migrations` folder with the following content:
 ```ruby
 class MigrationName < DataMigration
   def up
